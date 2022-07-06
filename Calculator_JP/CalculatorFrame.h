@@ -28,6 +28,9 @@ private:
 	wxButton* binButton; // Binary 
 	wxButton* hexButton; // Hexdecimal
 	wxButton* decButton; // Decimal
+
+	// Text Box
+	wxTextCtrl* currentTextBox; // Display current number
 public:
 	CalculatorFrame(); // Constructor
 };
