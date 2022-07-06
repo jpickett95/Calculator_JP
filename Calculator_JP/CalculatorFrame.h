@@ -2,7 +2,9 @@
 
 #include "wx/wx.h"
 
-class CalculatorFrame : public wxFrame
+class CalculatorFrame : public wxFrame // inherits from wxFrame
 {
+public:
+	CalculatorFrame(); // Constructor
 };
 
