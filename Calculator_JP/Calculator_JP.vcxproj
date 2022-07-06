@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CalculatorApp.h" />
+    <ClInclude Include="CalculatorFrame.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp" />
+    <ClCompile Include="CalculatorFrame.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

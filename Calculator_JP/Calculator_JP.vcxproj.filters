@@ -18,9 +18,15 @@
     <ClInclude Include="CalculatorApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CalculatorFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CalculatorApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculatorFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
