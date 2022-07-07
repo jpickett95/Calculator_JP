@@ -65,5 +65,6 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 
 void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 {
-	
+	wxObject* object = evt.GetEventObject();
+	currentTextBox->AppendText(((wxButton*)object)->GetLabel());
 }
