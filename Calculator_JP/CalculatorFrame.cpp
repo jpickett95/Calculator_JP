@@ -1,7 +1,6 @@
 #include "CalculatorFrame.h"
 #include <wx/gbsizer.h> // used for wxGridBagSizer
 
-
 // Event Table
 wxBEGIN_EVENT_TABLE(CalculatorFrame, wxFrame) // Begin
 // Button Events
