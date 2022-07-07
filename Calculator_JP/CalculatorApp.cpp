@@ -6,5 +6,5 @@ bool CalculatorApp::OnInit()
 {
 	mainFrame = new CalculatorFrame();
 	mainFrame->Show();
-	return false;
+	return true;
 }

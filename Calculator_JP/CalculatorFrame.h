@@ -25,9 +25,7 @@ private:
 	wxButton* modButton; // modulus
 	wxButton* decimalPointButton; // "."
 	wxButton* posNegButton; // +/-
-	wxButton* binButton; // Binary 
-	wxButton* hexButton; // Hexdecimal
-	wxButton* decButton; // Decimal
+	wxButton* binHexDecButton; // changes state between Binary/Hexadecimal/Decimal
 
 	// Text Box
 	wxTextCtrl* currentTextBox; // Display current number
