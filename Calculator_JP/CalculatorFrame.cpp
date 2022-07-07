@@ -1,10 +1,11 @@
 #include "CalculatorFrame.h"
 #include <wx/gbsizer.h> // used for wxGridBagSizer
+#include "ButtonFactory.h"
 
 // Event Table
 wxBEGIN_EVENT_TABLE(CalculatorFrame, wxFrame) // Begin
 // Button Events
-EVT_BUTTON(100, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(100, CalculatorFrame::OnButtonClick)
 EVT_BUTTON(101, CalculatorFrame::OnButtonClick)
 EVT_BUTTON(102, CalculatorFrame::OnButtonClick)
 EVT_BUTTON(103, CalculatorFrame::OnButtonClick)
@@ -35,6 +36,7 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	windowGrid->Add(currentTextBox = new wxTextCtrl(this, 200, "", wxPoint(-1, -1), wxSize(-1, 75), wxTE_RIGHT), 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
 	
 	//Buttons
+	ButtonFactory buttonFactory;
 	wxGridSizer* buttonsGrid = new wxGridSizer(5,4,3,3); // Grid to hold buttons
 	buttonsGrid->Add(clearButton = new wxButton(this, 1001, "Clr"), 0, wxEXPAND);
 	buttonsGrid->Add(posNegButton = new wxButton(this, 1002, "+/-"), 0, wxEXPAND);
@@ -53,13 +55,17 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	buttonsGrid->Add(numButton_3 = new wxButton(this, 103, "3"), 0, wxEXPAND);
 	buttonsGrid->Add(addButton = new wxButton(this, 1007, "+"), 0, wxEXPAND);
 	buttonsGrid->Add(binHexDecButton = new wxButton(this, 1008, "BIN\nHEX\nDEC"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_0 = new wxButton(this, 100, "0"), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_0 = buttonFactory.CreateNumButton(0,this), 0, wxEXPAND);
+	
 	buttonsGrid->Add(decimalPointButton = new wxButton(this, 1009, "."), 0, wxEXPAND);
 	buttonsGrid->Add(equalsButton = new wxButton(this, 1010, "="), 0, wxEXPAND);
 	buttonsGrid->Layout();
 	windowGrid->Add(buttonsGrid, 1, wxEXPAND); // Add buttons to windowGrid
 
 	this->SetSizer(windowGrid); // set window to try to resize according to windowGrid proportions
+
+	// Event Bindings
+	numButton_0->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 }
 
 void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
