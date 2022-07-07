@@ -3,29 +3,29 @@
 #include "ButtonFactory.h"
 
 // Event Table
-wxBEGIN_EVENT_TABLE(CalculatorFrame, wxFrame) // Begin
+//wxBEGIN_EVENT_TABLE(CalculatorFrame, wxFrame) // Begin
 // Button Events
 //EVT_BUTTON(100, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(101, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(102, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(103, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(104, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(105, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(106, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(107, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(108, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(109, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1001, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1002, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1003, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1004, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1005, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1006, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1007, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1008, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1009, CalculatorFrame::OnButtonClick)
-EVT_BUTTON(1010, CalculatorFrame::OnButtonClick)
-wxEND_EVENT_TABLE() // End
+//EVT_BUTTON(101, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(102, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(103, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(104, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(105, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(106, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(107, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(108, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(109, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1001, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1002, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1003, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1004, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1005, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1006, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1007, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1008, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1009, CalculatorFrame::OnButtonClick)
+//EVT_BUTTON(1010, CalculatorFrame::OnButtonClick)
+//wxEND_EVENT_TABLE() // End
 
 
 CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculator - Jonah Pickett", wxPoint(300,200), wxSize(400, 500))
@@ -36,29 +36,28 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	windowGrid->Add(currentTextBox = new wxTextCtrl(this, 200, "", wxPoint(-1, -1), wxSize(-1, 75), wxTE_RIGHT), 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
 	
 	//Buttons
-	ButtonFactory buttonFactory;
+	ButtonFactory buttonFactory; // create a button factory
 	wxGridSizer* buttonsGrid = new wxGridSizer(5,4,3,3); // Grid to hold buttons
-	buttonsGrid->Add(clearButton = new wxButton(this, 1001, "Clr"), 0, wxEXPAND);
-	buttonsGrid->Add(posNegButton = new wxButton(this, 1002, "+/-"), 0, wxEXPAND);
-	buttonsGrid->Add(modButton = new wxButton(this, 1003, "%"), 0, wxEXPAND);
-	buttonsGrid->Add(divideButton = new wxButton(this, 1004, "/"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_7 = new wxButton(this, 107, "7"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_8 = new wxButton(this, 108, "8"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_9 = new wxButton(this, 109, "9"), 0, wxEXPAND);
-	buttonsGrid->Add(multiplyButton = new wxButton(this, 1005, "*"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_4 = new wxButton(this, 104, "4"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_5 = new wxButton(this, 105, "5"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_6 = new wxButton(this, 106, "6"), 0, wxEXPAND);
-	buttonsGrid->Add(subtractButton = new wxButton(this, 1006, "-"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_1 = new wxButton(this, 101, "1"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_2 = new wxButton(this, 102, "2"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_3 = new wxButton(this, 103, "3"), 0, wxEXPAND);
-	buttonsGrid->Add(addButton = new wxButton(this, 1007, "+"), 0, wxEXPAND);
-	buttonsGrid->Add(binHexDecButton = new wxButton(this, 1008, "BIN\nHEX\nDEC"), 0, wxEXPAND);
-	buttonsGrid->Add(numButton_0 = buttonFactory.CreateNumButton(0,this), 0, wxEXPAND);
-	
-	buttonsGrid->Add(decimalPointButton = new wxButton(this, 1009, "."), 0, wxEXPAND);
-	buttonsGrid->Add(equalsButton = new wxButton(this, 1010, "="), 0, wxEXPAND);
+	buttonsGrid->Add(clearButton = buttonFactory.CreateClearButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(posNegButton = buttonFactory.CreatePosNegButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(modButton = buttonFactory.CreateModButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(divideButton = buttonFactory.CreateDivideButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_7 = buttonFactory.CreateNumButton(7, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_8 = buttonFactory.CreateNumButton(8, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_9 = buttonFactory.CreateNumButton(9, this), 0, wxEXPAND);
+	buttonsGrid->Add(multiplyButton = buttonFactory.CreateMultiplyButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_4 = buttonFactory.CreateNumButton(4, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_5 = buttonFactory.CreateNumButton(5, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_6 = buttonFactory.CreateNumButton(6, this), 0, wxEXPAND);
+	buttonsGrid->Add(subtractButton = buttonFactory.CreateSubtractButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_1 = buttonFactory.CreateNumButton(1, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_2 = buttonFactory.CreateNumButton(2, this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_3 = buttonFactory.CreateNumButton(3, this), 0, wxEXPAND);
+	buttonsGrid->Add(addButton = buttonFactory.CreateAddButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(binHexDecButton = buttonFactory.CreateBinHexDecButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(numButton_0 = buttonFactory.CreateNumButton(0,this), 0, wxEXPAND);	
+	buttonsGrid->Add(decimalPointButton = buttonFactory.CreateDecimalPointButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(equalsButton = buttonFactory.CreateEqualsButton(this), 0, wxEXPAND);
 	buttonsGrid->Layout();
 	windowGrid->Add(buttonsGrid, 1, wxEXPAND); // Add buttons to windowGrid
 
@@ -66,6 +65,26 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 
 	// Event Bindings
 	numButton_0->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_1->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_2->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_3->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_4->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_5->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_6->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_7->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_8->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	numButton_9->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	clearButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	posNegButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	modButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	divideButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	multiplyButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	subtractButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	addButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	binHexDecButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	decimalPointButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	equalsButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+
 }
 
 void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)

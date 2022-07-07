@@ -31,7 +31,7 @@ private:
 	wxTextCtrl* currentTextBox; // Display current number
 public:
 	CalculatorFrame(); // Constructor
-	wxDECLARE_EVENT_TABLE(); // Declare that we are using an event table
+	//wxDECLARE_EVENT_TABLE(); // Declare that we are using an event table
 	void OnButtonClick(wxCommandEvent& evt); // button click event
 };
 
