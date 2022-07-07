@@ -33,8 +33,12 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	wxBoxSizer* windowGrid = new wxBoxSizer(wxVERTICAL);
 
 	// Add TextBox display to windowGrid
-	windowGrid->Add(currentTextBox = new wxTextCtrl(this, 200, "", wxPoint(-1, -1), wxSize(-1, 75), wxTE_RIGHT), 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
-	
+	windowGrid->Add(currentTextBox = new wxTextCtrl(this, 200, "", wxPoint(-1, -1), wxSize(-1, 75), wxTE_RIGHT | wxTE_READONLY | wxTE_NO_VSCROLL), 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
+	wxFont textBoxFont = wxFont(25, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false);
+	currentTextBox->SetFont(textBoxFont);
+	currentTextBox->SetMaxLength(18);
+
+
 	//Buttons
 	ButtonFactory buttonFactory; // create a button factory
 	wxGridSizer* buttonsGrid = new wxGridSizer(5,4,3,3); // Grid to hold buttons
