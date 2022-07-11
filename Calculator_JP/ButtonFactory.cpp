@@ -1,10 +1,12 @@
 #include "ButtonFactory.h"
 #include "wx/wx.h"
+#include "CalculatorFrame.h"
 
-wxButton* ButtonFactory::CreateNumButton(int _number, wxWindow* _parent ) const {
-	std::string title;
+
+wxButton* ButtonFactory::CreateNumButton(int _number, wxWindow* _parent ) const{
+	std::string title; 
 	title = std::to_string(_number);
-	return new wxButton(_parent, wxID_ANY, title);
+	return new wxButton(_parent, wxID_ANY, title);	
 }
 
 wxButton* ButtonFactory::CreateClearButton(wxWindow* _parent) const {

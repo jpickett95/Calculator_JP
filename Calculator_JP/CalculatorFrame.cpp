@@ -2,32 +2,6 @@
 #include <wx/gbsizer.h> // used for wxGridBagSizer
 #include "ButtonFactory.h"
 
-// Event Table
-//wxBEGIN_EVENT_TABLE(CalculatorFrame, wxFrame) // Begin
-// Button Events
-//EVT_BUTTON(100, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(101, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(102, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(103, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(104, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(105, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(106, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(107, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(108, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(109, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1001, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1002, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1003, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1004, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1005, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1006, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1007, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1008, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1009, CalculatorFrame::OnButtonClick)
-//EVT_BUTTON(1010, CalculatorFrame::OnButtonClick)
-//wxEND_EVENT_TABLE() // End
-
-
 CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculator - Jonah Pickett", wxPoint(300,200), wxSize(400, 500))
 {
 	wxBoxSizer* windowGrid = new wxBoxSizer(wxVERTICAL);
@@ -94,5 +68,5 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 {
 	wxObject* object = evt.GetEventObject();
-	currentTextBox->AppendText(((wxButton*)object)->GetLabel());
+	currentTextBox->AppendText(((wxButton*)object)->GetLabelText());
 }
