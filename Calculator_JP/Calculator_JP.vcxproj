@@ -150,7 +150,7 @@
     <ClInclude Include="ButtonFactory.h" />
     <ClInclude Include="CalculatorApp.h" />
     <ClInclude Include="CalculatorFrame.h" />
-    <ClInclude Include="CalulatorProcessor.h" />
+    <ClInclude Include="CalculatorProcessor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ButtonFactory.cpp" />

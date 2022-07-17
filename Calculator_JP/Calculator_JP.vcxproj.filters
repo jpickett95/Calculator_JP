@@ -24,7 +24,7 @@
     <ClInclude Include="ButtonFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CalulatorProcessor.h">
+    <ClInclude Include="CalculatorProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

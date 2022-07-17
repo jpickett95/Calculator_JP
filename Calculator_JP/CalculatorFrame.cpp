@@ -70,3 +70,4 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 	wxObject* object = evt.GetEventObject();
 	currentTextBox->AppendText(((wxButton*)object)->GetLabelText());
 }
+
