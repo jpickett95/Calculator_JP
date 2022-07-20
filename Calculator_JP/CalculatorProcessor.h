@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
+#include <string> 
+#include "CalculatorFrame.h" 
 
-class CalculatorProcessor
+class CalculatorProcessor : public CalculatorFrame
 {
 private:
 	static CalculatorProcessor* processor; 
@@ -15,8 +16,9 @@ public:
 		return processor;
 	}
 
-	void SetBaseNumber(float _number) {
-		baseNumber = _number;
+	void SetBaseNumber() {
+		std::string text = (std::string)GetTextBox()->GetLineText(0);
+		baseNumber = std::stof(text);
 	}
 	
 	CalculatorProcessor(CalculatorProcessor& _other) = delete; // Copy Constructor
@@ -78,6 +80,7 @@ public:
 	}
 
 	float Add(float _number) {
+		SetBaseNumber();
 		return baseNumber + _number;
 	}
 

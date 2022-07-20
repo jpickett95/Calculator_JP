@@ -32,5 +32,6 @@ private:
 public:
 	CalculatorFrame(); // Constructor
 	void OnButtonClick(wxCommandEvent& evt); // button click event
+	wxTextCtrl* GetTextBox();
 };
 
