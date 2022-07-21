@@ -68,7 +68,15 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 {
 	wxObject* object = evt.GetEventObject();
-	currentTextBox->AppendText(((wxButton*)object)->GetLabelText());
+	std::string label = (std::string)((wxButton*)object)->GetLabelText();
+	transform(label.begin(), label.end(), label.begin(), std::toupper);
+	
+	if (label == "CLR"){
+		currentTextBox->SetValue("");
+	}
+	else {
+		currentTextBox->AppendText(label);
+	}
 }
 
 wxTextCtrl* CalculatorFrame::GetTextBox()
