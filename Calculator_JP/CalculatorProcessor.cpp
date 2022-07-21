@@ -14,5 +14,5 @@ void CalculatorProcessor::Add() {
 	SetBaseNumber();
 	AddCommand* addCommand = new AddCommand();
 	commands.push_back(addCommand);
-	GetTextBox()->SetValue("");
+	
 }

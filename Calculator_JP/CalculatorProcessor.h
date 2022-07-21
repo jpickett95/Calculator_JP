@@ -21,13 +21,13 @@ public:
 	static CalculatorProcessor* GetInstance();
 
 	void SetBaseNumber() {
-		wxString text = GetTextBox()->GetValue();
-		baseNumber = wxAtoi(text);
+		std::string text = GetTextBox()->GetValue().ToStdString();
+		baseNumber = std::stoi(text);
 	}
 
 	void SetSecondNumber() {
-		wxString text = GetTextBox()->GetValue();
-		secondNumber = wxAtoi(text);
+		std::string text = GetTextBox()->GetValue().ToStdString();
+		secondNumber = std::stoi(text);
 	}
 
 	int GetBaseNumber() {

@@ -82,6 +82,7 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 	}
 	else if (label == "+") {
 		processor->Add();
+		currentTextBox->SetValue("");
 	}
 	else {
 		currentTextBox->AppendText(label);
