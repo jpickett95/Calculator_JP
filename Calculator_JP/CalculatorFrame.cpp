@@ -1,6 +1,7 @@
 #include "CalculatorFrame.h"
 #include <wx/gbsizer.h> // used for wxGridBagSizer
 #include "ButtonFactory.h"
+#include "CalculatorProcessor.h"
 
 CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculator - Jonah Pickett", wxPoint(300,200), wxSize(400, 500))
 {
@@ -34,7 +35,7 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	buttonsGrid->Add(addButton = buttonFactory.CreateAddButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(binHexDecButton = buttonFactory.CreateBinHexDecButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(numButton_0 = buttonFactory.CreateNumButton(0,this), 0, wxEXPAND);	
-	buttonsGrid->Add(decimalPointButton = buttonFactory.CreateDecimalPointButton(this), 0, wxEXPAND);
+	//buttonsGrid->Add(decimalPointButton = buttonFactory.CreateDecimalPointButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(equalsButton = buttonFactory.CreateEqualsButton(this), 0, wxEXPAND);
 	buttonsGrid->Layout();
 	windowGrid->Add(buttonsGrid, 1, wxEXPAND); // Add buttons to windowGrid
@@ -60,7 +61,7 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	subtractButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	addButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	binHexDecButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
-	decimalPointButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	//decimalPointButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	equalsButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 
 }
@@ -70,9 +71,17 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 	wxObject* object = evt.GetEventObject();
 	std::string label = (std::string)((wxButton*)object)->GetLabelText();
 	transform(label.begin(), label.end(), label.begin(), std::toupper);
-	
-	if (label == "CLR"){
+	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
+
+	if (label == "C"){
+		processor->ClearCommands();
 		currentTextBox->SetValue("");
+	}
+	else if (label == "=") {
+		processor->Equals();
+	}
+	else if (label == "+") {
+		processor->Add();
 	}
 	else {
 		currentTextBox->AppendText(label);

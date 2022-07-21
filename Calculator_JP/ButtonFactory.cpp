@@ -10,7 +10,7 @@ wxButton* ButtonFactory::CreateNumButton(int _number, wxWindow* _parent ) const{
 }
 
 wxButton* ButtonFactory::CreateClearButton(wxWindow* _parent) const {
-	return new wxButton(_parent, wxID_ANY, "Clr");
+	return new wxButton(_parent, wxID_ANY, "C");
 }
 
 wxButton* ButtonFactory::CreatePosNegButton(wxWindow* _parent) const {

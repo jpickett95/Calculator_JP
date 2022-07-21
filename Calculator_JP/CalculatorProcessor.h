@@ -1,24 +1,41 @@
 #pragma once
 
 #include <string> 
+#include <vector> 
 #include "CalculatorFrame.h" 
+#include "IBaseCommand.h"
+#include "AddCommand.h"
+
+class IBaseCommand;
 
 class CalculatorProcessor : public CalculatorFrame
 {
 private:
 	static CalculatorProcessor* processor; 
-	float baseNumber;
+	int baseNumber;
+	int secondNumber;
+	std::vector<IBaseCommand*> commands;
+
 	CalculatorProcessor() {} // Constructor
 public:
-	static CalculatorProcessor* GetInstance() { 
-		if (processor == nullptr)
-			processor = new CalculatorProcessor();
-		return processor;
-	}
+	static CalculatorProcessor* GetInstance();
 
 	void SetBaseNumber() {
-		std::string text = (std::string)GetTextBox()->GetLineText(0);
-		baseNumber = std::stof(text);
+		wxString text = GetTextBox()->GetValue();
+		baseNumber = wxAtoi(text);
+	}
+
+	void SetSecondNumber() {
+		wxString text = GetTextBox()->GetValue();
+		secondNumber = wxAtoi(text);
+	}
+
+	int GetBaseNumber() {
+		return baseNumber;
+	}
+
+	int GetSecondNumber() {
+		return secondNumber;
 	}
 	
 	CalculatorProcessor(CalculatorProcessor& _other) = delete; // Copy Constructor
@@ -79,10 +96,7 @@ public:
 		return binaryString;
 	}
 
-	float Add(float _number) {
-		SetBaseNumber();
-		return baseNumber + _number;
-	}
+	void Add();
 
 	float Subtract(float _number) {
 		return baseNumber - _number;
@@ -95,6 +109,20 @@ public:
 	float Divide(float _number) {
 		return baseNumber / _number;
 	}
+
+	void Equals() {
+		SetSecondNumber();
+		for (int i = 0; i < commands.size(); ++i) {
+			commands[i]->Execute();
+		}
+	}
+
+	void ClearCommands() {
+		commands.clear();
+	}
+
+	bool IsCommandsEmpty() {
+		return commands.empty();
+	}
 };
 
-CalculatorProcessor* CalculatorProcessor::processor = nullptr;
