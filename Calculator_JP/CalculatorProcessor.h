@@ -22,6 +22,7 @@ private:
 	std::vector<IBaseCommand*> commands;
 
 	CalculatorProcessor() {} // Constructor
+	~CalculatorProcessor();
 public:
 	static CalculatorProcessor* GetInstance();
 
@@ -76,7 +77,9 @@ public:
 
 	void ClearCommands() {
 		if (commands.empty() != true) {
-			commands.clear();
+			for (int i = 0; i < commands.size(); ++i) {
+				delete commands[i];
+			}
 		}
 	}
 };

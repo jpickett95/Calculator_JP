@@ -4,6 +4,13 @@
 
 CalculatorProcessor* CalculatorProcessor::processor = nullptr;
 
+CalculatorProcessor::~CalculatorProcessor()
+{
+	for (int i = 0; i < commands.size(); ++i) {
+		delete commands[i];
+	}
+}
+
 CalculatorProcessor* CalculatorProcessor::GetInstance() {
 	if (processor == nullptr)
 		processor = new CalculatorProcessor();
