@@ -4,7 +4,7 @@
 #include "CalculatorFrame.h"
 #include "CalculatorProcessor.h"
 
-class AddCommand : public IBaseCommand, public CalculatorFrame
+class AddCommand : public IBaseCommand
 {
 private:
 	int baseNumber;

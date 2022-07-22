@@ -10,9 +10,20 @@ CalculatorProcessor* CalculatorProcessor::GetInstance() {
 	return processor;
 }
 
-void CalculatorProcessor::Add() {
-	SetBaseNumber();
+void CalculatorProcessor::Add(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
 	AddCommand* addCommand = new AddCommand();
 	commands.push_back(addCommand);
 	
+}
+
+void CalculatorProcessor::Equals(CalculatorFrame* _frame) {
+		std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+		secondNumber = std::stoi(text);
+	if (commands.empty() != true) {
+		for (int i = 0; i < commands.size(); ++i) {
+			commands[i]->Execute();
+		}
+	}
 }

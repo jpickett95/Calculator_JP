@@ -29,6 +29,8 @@ private:
 
 	// Text Box
 	wxTextCtrl* currentTextBox; // Display current number
+
+	bool hitEquals = false;
 public:
 	CalculatorFrame(); // Constructor
 	void OnButtonClick(wxCommandEvent& evt); // button click event

@@ -73,18 +73,27 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 	transform(label.begin(), label.end(), label.begin(), std::toupper);
 	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 
+	
+
 	if (label == "C"){
 		processor->ClearCommands();
 		currentTextBox->SetValue("");
+		hitEquals = false;
 	}
 	else if (label == "=") {
-		processor->Equals();
+		processor->Equals(this);
+		currentTextBox->SetValue(std::to_string(processor->GetTotal()));
+		hitEquals = true;
 	}
 	else if (label == "+") {
-		processor->Add();
+		processor->Add(this);
 		currentTextBox->SetValue("");
 	}
 	else {
+		if (hitEquals == true) {
+			currentTextBox->SetValue("");
+			hitEquals = false;
+		}
 		currentTextBox->AppendText(label);
 	}
 }

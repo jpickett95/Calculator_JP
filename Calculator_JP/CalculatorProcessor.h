@@ -7,28 +7,30 @@
 #include "AddCommand.h"
 
 class IBaseCommand;
+class CalculatorFrame;
 
-class CalculatorProcessor : public CalculatorFrame
+class CalculatorProcessor
 {
 private:
 	static CalculatorProcessor* processor; 
 	int baseNumber;
 	int secondNumber;
+	int total;
 	std::vector<IBaseCommand*> commands;
 
 	CalculatorProcessor() {} // Constructor
 public:
 	static CalculatorProcessor* GetInstance();
 
-	void SetBaseNumber() {
-		std::string text = GetTextBox()->GetValue().ToStdString();
-		baseNumber = std::stoi(text);
-	}
+	//void SetBaseNumber() {
+	//	std::string text = GetTextBox()->GetValue().ToStdString();
+	//	baseNumber = std::stoi(text);
+	//}
 
-	void SetSecondNumber() {
-		std::string text = GetTextBox()->GetValue().ToStdString();
-		secondNumber = std::stoi(text);
-	}
+	//void SetSecondNumber() {
+	//	std::string text = GetTextBox()->GetValue().ToStdString();
+	//	secondNumber = std::stoi(text);
+	//}
 
 	int GetBaseNumber() {
 		return baseNumber;
@@ -36,6 +38,14 @@ public:
 
 	int GetSecondNumber() {
 		return secondNumber;
+	}
+
+	int GetTotal() {
+		return total;
+	}
+
+	void SetTotal(int _number) {
+		total = _number;
 	}
 	
 	CalculatorProcessor(CalculatorProcessor& _other) = delete; // Copy Constructor
@@ -96,7 +106,7 @@ public:
 		return binaryString;
 	}
 
-	void Add();
+	void Add(CalculatorFrame* _frame);
 
 	float Subtract(float _number) {
 		return baseNumber - _number;
@@ -110,19 +120,12 @@ public:
 		return baseNumber / _number;
 	}
 
-	void Equals() {
-		SetSecondNumber();
-		for (int i = 0; i < commands.size(); ++i) {
-			commands[i]->Execute();
-		}
-	}
+	void Equals(CalculatorFrame* _frame);
 
 	void ClearCommands() {
-		commands.clear();
-	}
-
-	bool IsCommandsEmpty() {
-		return commands.empty();
+		if (commands.empty() != true) {
+			commands.clear();
+		}
 	}
 };
 

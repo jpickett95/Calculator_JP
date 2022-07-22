@@ -7,8 +7,7 @@ void AddCommand::Add() {
 	baseNumber = processor->GetBaseNumber();
 	secondNumber = processor->GetSecondNumber();
 	total = baseNumber + secondNumber;
-	wxString strTotal(std::to_string(total));
-	GetTextBox()->SetValue(strTotal);
+	processor->SetTotal(total);
 }
 
 void AddCommand::Execute() {
