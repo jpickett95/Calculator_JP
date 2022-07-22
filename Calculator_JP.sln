@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator_JP", "Calculator_JP\Calculator_JP.vcxproj", "{539EABD2-AC50-463D-A87B-5422CDA1A474}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator_JP_UnitTests", "Calculator_JP_UnitTests\Calculator_JP_UnitTests.vcxproj", "{4887111B-553F-43AE-9AED-EEC42C89EA14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{539EABD2-AC50-463D-A87B-5422CDA1A474}.Release|x64.Build.0 = Release|x64
 		{539EABD2-AC50-463D-A87B-5422CDA1A474}.Release|x86.ActiveCfg = Release|Win32
 		{539EABD2-AC50-463D-A87B-5422CDA1A474}.Release|x86.Build.0 = Release|Win32
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Debug|x64.ActiveCfg = Debug|x64
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Debug|x64.Build.0 = Debug|x64
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Debug|x86.ActiveCfg = Debug|Win32
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Debug|x86.Build.0 = Debug|Win32
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Release|x64.ActiveCfg = Release|x64
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Release|x64.Build.0 = Release|x64
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Release|x86.ActiveCfg = Release|Win32
+		{4887111B-553F-43AE-9AED-EEC42C89EA14}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
