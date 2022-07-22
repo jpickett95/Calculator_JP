@@ -25,15 +25,15 @@ private:
 public:
 	static CalculatorProcessor* GetInstance();
 
-	//void SetBaseNumber() {
-	//	std::string text = GetTextBox()->GetValue().ToStdString();
-	//	baseNumber = std::stoi(text);
+	// Used for Unit Testing {
+	//void SetBaseNumber(int _number) {
+	//	baseNumber = _number;
 	//}
 
-	//void SetSecondNumber() {
-	//	std::string text = GetTextBox()->GetValue().ToStdString();
-	//	secondNumber = std::stoi(text);
+	//void SetSecondNumber(int _number) {
+	//	secondNumber = _number;
 	//}
+	// }
 
 	int GetBaseNumber() {
 		return baseNumber;
