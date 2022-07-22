@@ -11,8 +11,9 @@ public:
 	wxButton* CreateMultiplyButton(wxWindow* _parent) const;
 	wxButton* CreateSubtractButton(wxWindow* _parent) const;
 	wxButton* CreateAddButton(wxWindow* _parent) const;
-	wxButton* CreateBinHexDecButton(wxWindow* _parent) const;
-	wxButton* CreateDecimalPointButton(wxWindow* _parent) const;
+	wxButton* CreateDecimalButton(wxWindow* _parent) const;
+	wxButton* CreateBinaryButton(wxWindow* _parent) const;
+	wxButton* CreateHexadecimalButton(wxWindow* _parent) const;
 	wxButton* CreateEqualsButton(wxWindow* _parent) const;
 
 };

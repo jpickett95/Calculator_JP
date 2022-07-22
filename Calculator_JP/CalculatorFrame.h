@@ -23,14 +23,18 @@ private:
 	wxButton* equalsButton;
 	wxButton* clearButton;
 	wxButton* modButton; // modulus
-	wxButton* decimalPointButton; // "."
+	wxButton* binaryButton; // Bin
 	wxButton* posNegButton; // +/-
-	wxButton* binHexDecButton; // changes state between Binary/Hexadecimal/Decimal
-
+	wxButton* decimalButton; // Decimal
+	wxButton* hexadecimalButton; // Hex
 	// Text Box
 	wxTextCtrl* currentTextBox; // Display current number
 
+	// Bools
 	bool hitEquals = false;
+	bool hitDecimal = false;
+	bool hitHexadecimal = false;
+	bool hitBinary = false;
 public:
 	CalculatorFrame(); // Constructor
 	void OnButtonClick(wxCommandEvent& evt); // button click event

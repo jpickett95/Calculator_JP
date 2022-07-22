@@ -16,7 +16,7 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 
 	//Buttons
 	ButtonFactory buttonFactory; // create a button factory
-	wxGridSizer* buttonsGrid = new wxGridSizer(5,4,3,3); // Grid to hold buttons
+	wxGridSizer* buttonsGrid = new wxGridSizer(6,4,3,3); // Grid to hold buttons
 	buttonsGrid->Add(clearButton = buttonFactory.CreateClearButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(posNegButton = buttonFactory.CreatePosNegButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(modButton = buttonFactory.CreateModButton(this), 0, wxEXPAND);
@@ -33,10 +33,11 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	buttonsGrid->Add(numButton_2 = buttonFactory.CreateNumButton(2, this), 0, wxEXPAND);
 	buttonsGrid->Add(numButton_3 = buttonFactory.CreateNumButton(3, this), 0, wxEXPAND);
 	buttonsGrid->Add(addButton = buttonFactory.CreateAddButton(this), 0, wxEXPAND);
-	buttonsGrid->Add(binHexDecButton = buttonFactory.CreateBinHexDecButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(decimalButton = buttonFactory.CreateDecimalButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(numButton_0 = buttonFactory.CreateNumButton(0,this), 0, wxEXPAND);	
-	//buttonsGrid->Add(decimalPointButton = buttonFactory.CreateDecimalPointButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(binaryButton = buttonFactory.CreateBinaryButton(this), 0, wxEXPAND);
 	buttonsGrid->Add(equalsButton = buttonFactory.CreateEqualsButton(this), 0, wxEXPAND);
+	buttonsGrid->Add(hexadecimalButton = buttonFactory.CreateHexadecimalButton(this), 0, wxEXPAND);
 	buttonsGrid->Layout();
 	windowGrid->Add(buttonsGrid, 1, wxEXPAND); // Add buttons to windowGrid
 
@@ -60,8 +61,9 @@ CalculatorFrame::CalculatorFrame() : wxFrame(nullptr, wxID_ANY, "Basic Calculato
 	multiplyButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	subtractButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	addButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
-	binHexDecButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
-	//decimalPointButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	decimalButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	binaryButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
+	hexadecimalButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 	equalsButton->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &CalculatorFrame::OnButtonClick, this);
 
 }
@@ -105,10 +107,28 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 		processor->Mod(this);
 		currentTextBox->SetValue("");
 	}
+	else if (label == "BIN") {
+		processor->GetBinary(this);
+		hitBinary = true;
+	}
+	else if (label == "HEX") {
+		processor->GetHexadecimal(this);
+		hitHexadecimal = true;
+	}
+	else if (label == "DEC") {
+		processor->GetDecimal(this);
+		hitDecimal = true;
+	}
+	else if (label == "+/-") {
+		processor->SwitchPosNeg(this);
+	}
 	else {
-		if (hitEquals == true) {
+		if (hitEquals == true || hitBinary == true || hitHexadecimal == true || hitDecimal == true) {
 			currentTextBox->SetValue("");
 			hitEquals = false;
+			hitBinary = false;
+			hitHexadecimal = false;
+			hitDecimal = false;
 		}
 		currentTextBox->AppendText(label);
 	}

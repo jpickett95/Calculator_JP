@@ -54,60 +54,11 @@ public:
 	CalculatorProcessor(CalculatorProcessor& _other) = delete; // Copy Constructor
 	void operator=(const CalculatorProcessor& _other) = delete; // Assignment Operator
 
-	std::string GetDecimal() {
-		return std::to_string(baseNumber);
-	}
+	void GetDecimal(CalculatorFrame* _frame);
 
-	std::string GetHexadecimal() {
-		std::string hexString = "";
-		int number = baseNumber;
-		while (number > 0) {
-			int mod = number % 16;
-			if (mod < 10)
-				hexString = std::to_string(mod) + hexString;
-			else {
-				switch (mod) {
-				case 10:
-					hexString = "A" + hexString;
-					break;
-				case 11:
-					hexString = "B" + hexString;
-					break;
-				case 12:
-					hexString = "C" + hexString;
-					break;
-				case 13:
-					hexString = "D" + hexString;
-					break;
-				case 14:
-					hexString = "E" + hexString;
-					break;
-				case 15:
-					hexString = "F" + hexString;
-					break;
-				}
-			}
-			number = number / 16;
-		}
-		hexString = "0x" + hexString;
-		return hexString;
-	}
+	void GetHexadecimal(CalculatorFrame* _frame);
 
-	std::string GetBinary() {
-		std::string binaryString = "";
-		int number = baseNumber;
-		for (int i = 0; i < 16; ++i) {
-			// Check if number is even/odd
-			if (number % 2 == 0)
-				binaryString = "0" + binaryString;
-			else
-				binaryString = "1" + binaryString;
-
-			// Change number for processing
-			number = number / 2;
-		}
-		return binaryString;
-	}
+	void GetBinary(CalculatorFrame* _frame);
 
 	void Add(CalculatorFrame* _frame);
 
@@ -120,6 +71,8 @@ public:
 	void Equals(CalculatorFrame* _frame);
 
 	void Mod(CalculatorFrame* _frame);
+
+	void SwitchPosNeg(CalculatorFrame* _frame);
 
 	void ClearCommands() {
 		if (commands.empty() != true) {

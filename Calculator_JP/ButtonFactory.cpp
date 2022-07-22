@@ -37,12 +37,16 @@ wxButton* ButtonFactory::CreateAddButton(wxWindow* _parent) const {
 	return new wxButton(_parent, wxID_ANY, "+");
 }
 
-wxButton* ButtonFactory::CreateDecimalPointButton(wxWindow* _parent) const {
-	return new wxButton(_parent, wxID_ANY, ".");
+wxButton* ButtonFactory::CreateBinaryButton(wxWindow* _parent) const {
+	return new wxButton(_parent, wxID_ANY, "BIN");
 }
 
-wxButton* ButtonFactory::CreateBinHexDecButton(wxWindow* _parent) const {
-	return new wxButton(_parent, wxID_ANY, "BIN\nHEX\nDEC");
+wxButton* ButtonFactory::CreateHexadecimalButton(wxWindow* _parent) const {
+	return new wxButton(_parent, wxID_ANY, "HEX");
+}
+
+wxButton* ButtonFactory::CreateDecimalButton(wxWindow* _parent) const {
+	return new wxButton(_parent, wxID_ANY, "DEC");
 }
 
 wxButton* ButtonFactory::CreateEqualsButton(wxWindow* _parent) const {

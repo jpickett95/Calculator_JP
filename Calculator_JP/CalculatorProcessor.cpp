@@ -54,3 +54,69 @@ void CalculatorProcessor::Equals(CalculatorFrame* _frame) {
 		}
 	}
 }
+
+void CalculatorProcessor::GetBinary(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	std::string binaryString = "";
+	int number = baseNumber;
+	for (int i = 0; i < 16; ++i) {
+		// Check if number is even/odd
+		if (number % 2 == 0)
+			binaryString = "0" + binaryString;
+		else
+			binaryString = "1" + binaryString;
+
+		// Change number for processing
+		number = number / 2;
+	}
+	_frame->GetTextBox()->SetValue(binaryString);	
+}
+
+void CalculatorProcessor::GetHexadecimal(CalculatorFrame* _frame) {
+	std::string hexString = "";
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	int number = baseNumber;
+	while (number > 0) {
+		int mod = number % 16;
+		if (mod < 10)
+			hexString = std::to_string(mod) + hexString;
+		else {
+			switch (mod) {
+			case 10:
+				hexString = "A" + hexString;
+				break;
+			case 11:
+				hexString = "B" + hexString;
+				break;
+			case 12:
+				hexString = "C" + hexString;
+				break;
+			case 13:
+				hexString = "D" + hexString;
+				break;
+			case 14:
+				hexString = "E" + hexString;
+				break;
+			case 15:
+				hexString = "F" + hexString;
+				break;
+			}
+		}
+		number = number / 16;
+	}
+	hexString = "0x" + hexString;
+	_frame->GetTextBox()->SetValue(hexString);
+}
+
+void CalculatorProcessor::GetDecimal(CalculatorFrame* _frame) {
+	_frame->GetTextBox()->SetValue(std::to_string(baseNumber));
+}
+
+void CalculatorProcessor::SwitchPosNeg(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	baseNumber = baseNumber * -1;
+	_frame->GetTextBox()->SetValue(std::to_string(baseNumber));
+}
