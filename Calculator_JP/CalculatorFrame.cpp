@@ -75,51 +75,57 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 	transform(label.begin(), label.end(), label.begin(), std::toupper);
 	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 
-	
+	bool isEmpty = currentTextBox->IsEmpty();
 
 	if (label == "C"){
 		processor->ClearCommands();
 		currentTextBox->SetValue("");
 		hitEquals = false;
 	}
-	else if (label == "=") {
+	else if (label == "=" && hitEquals == false && hitOperand == true && isEmpty == false) {
+		hitOperand = false;
 		processor->Equals(this);
 		currentTextBox->SetValue(std::to_string(processor->GetTotal()));
 		hitEquals = true;
 	}
-	else if (label == "+") {
+	else if (label == "+" && hitOperand == false && isEmpty == false) {
+		hitOperand = true;
 		processor->Add(this);
 		currentTextBox->SetValue("");
 	}
-	else if (label == "-") {
+	else if (label == "-" && hitOperand == false && isEmpty == false) {
+		hitOperand = true;
 		processor->Subtract(this);
 		currentTextBox->SetValue("");
 	}
-	else if (label == "*") {
+	else if (label == "*" && hitOperand == false && isEmpty == false) {
+		hitOperand = true;
 		processor->Multiply(this);
 		currentTextBox->SetValue("");
 	}
-	else if (label == "/") {
+	else if (label == "/" && hitOperand == false && isEmpty == false) {
+		hitOperand = true;
 		processor->Divide(this);
 		currentTextBox->SetValue("");
 	}
-	else if (label == "%") {
+	else if (label == "%" && hitOperand == false && isEmpty == false) {
+		hitOperand = true;
 		processor->Mod(this);
 		currentTextBox->SetValue("");
 	}
-	else if (label == "BIN") {
+	else if (label == "BIN" && hitBinary == false && isEmpty == false) {
 		processor->GetBinary(this);
 		hitBinary = true;
 	}
-	else if (label == "HEX") {
+	else if (label == "HEX" && hitHexadecimal == false && isEmpty == false) {
 		processor->GetHexadecimal(this);
 		hitHexadecimal = true;
 	}
-	else if (label == "DEC") {
+	else if (label == "DEC" && hitDecimal == false && isEmpty == false) {
 		processor->GetDecimal(this);
 		hitDecimal = true;
 	}
-	else if (label == "+/-") {
+	else if (label == "+/-" && isEmpty == false) {
 		processor->SwitchPosNeg(this);
 	}
 	else {
@@ -130,7 +136,12 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 			hitHexadecimal = false;
 			hitDecimal = false;
 		}
-		currentTextBox->AppendText(label);
+		if (((hitOperand == true && label == "+" || label == "-" || label == "*" || label == "/" || label == "%") || (hitEquals == true && label == "=") || (hitOperand == false && hitEquals == false && label == "=") || (label == "BIN") || (label == "DEC") || (label == "HEX")) && isEmpty == true) {
+			
+		}
+		else {
+			currentTextBox->AppendText(label);
+		}
 	}
 }
 

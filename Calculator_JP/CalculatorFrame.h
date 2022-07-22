@@ -35,6 +35,7 @@ private:
 	bool hitDecimal = false;
 	bool hitHexadecimal = false;
 	bool hitBinary = false;
+	bool hitOperand = false;
 public:
 	CalculatorFrame(); // Constructor
 	void OnButtonClick(wxCommandEvent& evt); // button click event
