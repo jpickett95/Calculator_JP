@@ -89,6 +89,22 @@ void CalculatorFrame::OnButtonClick(wxCommandEvent& evt)
 		processor->Add(this);
 		currentTextBox->SetValue("");
 	}
+	else if (label == "-") {
+		processor->Subtract(this);
+		currentTextBox->SetValue("");
+	}
+	else if (label == "*") {
+		processor->Multiply(this);
+		currentTextBox->SetValue("");
+	}
+	else if (label == "/") {
+		processor->Divide(this);
+		currentTextBox->SetValue("");
+	}
+	else if (label == "%") {
+		processor->Mod(this);
+		currentTextBox->SetValue("");
+	}
 	else {
 		if (hitEquals == true) {
 			currentTextBox->SetValue("");

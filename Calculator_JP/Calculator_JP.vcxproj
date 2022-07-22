@@ -152,7 +152,11 @@
     <ClInclude Include="CalculatorApp.h" />
     <ClInclude Include="CalculatorFrame.h" />
     <ClInclude Include="CalculatorProcessor.h" />
+    <ClInclude Include="DivideCommand.h" />
     <ClInclude Include="IBaseCommand.h" />
+    <ClInclude Include="ModCommand.h" />
+    <ClInclude Include="MultiplyCommand.h" />
+    <ClInclude Include="SubtractCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddCommand.cpp" />
@@ -160,6 +164,10 @@
     <ClCompile Include="CalculatorApp.cpp" />
     <ClCompile Include="CalculatorFrame.cpp" />
     <ClCompile Include="CalculatorProcessor.cpp" />
+    <ClCompile Include="DivideCommand.cpp" />
+    <ClCompile Include="ModCommand.cpp" />
+    <ClCompile Include="MultiplyCommand.cpp" />
+    <ClCompile Include="SubtractCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,10 +5,13 @@
 #include "CalculatorFrame.h" 
 #include "IBaseCommand.h"
 #include "AddCommand.h"
+#include "SubtractCommand.h"
+#include "MultiplyCommand.h"
+#include "DivideCommand.h"
+#include "ModCommand.h"
 
 class IBaseCommand;
 class CalculatorFrame;
-
 class CalculatorProcessor
 {
 private:
@@ -108,19 +111,15 @@ public:
 
 	void Add(CalculatorFrame* _frame);
 
-	float Subtract(float _number) {
-		return baseNumber - _number;
-	}
+	void Subtract(CalculatorFrame* _frame);
 
-	float Multiply(float _number) {
-		return baseNumber * _number;
-	}
+	void Multiply(CalculatorFrame* _frame);
 
-	float Divide(float _number) {
-		return baseNumber / _number;
-	}
+	void Divide(CalculatorFrame* _frame);
 
 	void Equals(CalculatorFrame* _frame);
+
+	void Mod(CalculatorFrame* _frame);
 
 	void ClearCommands() {
 		if (commands.empty() != true) {

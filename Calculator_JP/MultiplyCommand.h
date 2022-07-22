@@ -3,14 +3,14 @@
 #include "IBaseCommand.h"
 #include "CalculatorProcessor.h"
 
-class AddCommand : public IBaseCommand
+class MultiplyCommand : public IBaseCommand
 {
 private:
 	int baseNumber;
 	int secondNumber;
 	int total;
 public:
-	void Add(); 
+	void Multiply();
 	void Execute();
 };
 

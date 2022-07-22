@@ -1,15 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "AddCommand.h"
+#include "SubtractCommand.h"
 
-void AddCommand::Add() {
+void SubtractCommand::Subtract()
+{
 	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 	baseNumber = processor->GetBaseNumber();
 	secondNumber = processor->GetSecondNumber();
-	total = baseNumber + secondNumber;
+	total = baseNumber - secondNumber;
 	processor->SetTotal(total);
 }
 
-void AddCommand::Execute() {
-	Add();
+void SubtractCommand::Execute()
+{
+	Subtract();
 }

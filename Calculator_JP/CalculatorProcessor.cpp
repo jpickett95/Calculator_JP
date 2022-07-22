@@ -15,7 +15,34 @@ void CalculatorProcessor::Add(CalculatorFrame* _frame) {
 	baseNumber = std::stoi(text);
 	AddCommand* addCommand = new AddCommand();
 	commands.push_back(addCommand);
-	
+}
+
+void CalculatorProcessor::Subtract(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	SubtractCommand* subtractCommand = new SubtractCommand();
+	commands.push_back(subtractCommand);
+}
+
+void CalculatorProcessor::Multiply(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	MultiplyCommand* multiplyCommand = new MultiplyCommand();
+	commands.push_back(multiplyCommand);
+}
+
+void CalculatorProcessor::Divide(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	DivideCommand* divideCommand = new DivideCommand();
+	commands.push_back(divideCommand);
+}
+
+void CalculatorProcessor::Mod(CalculatorFrame* _frame) {
+	std::string text = _frame->GetTextBox()->GetValue().ToStdString();
+	baseNumber = std::stoi(text);
+	ModCommand* modCommand = new ModCommand();
+	commands.push_back(modCommand);
 }
 
 void CalculatorProcessor::Equals(CalculatorFrame* _frame) {
