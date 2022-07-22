@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "ButtonFactory.h"
 #include "wx/wx.h"
 #include "CalculatorFrame.h"
