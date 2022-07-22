@@ -17,7 +17,7 @@ class CalculatorProcessor
 private:
 	static CalculatorProcessor* processor; 
 	int baseNumber;
-	int secondNumber;
+	int secondNumber; 
 	int total;
 	std::vector<IBaseCommand*> commands;
 
